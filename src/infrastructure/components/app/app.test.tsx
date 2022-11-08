@@ -25,7 +25,7 @@ describe('Given App component', () => {
             );
         });
         test('Then it should display the title', () => {
-            const title = new RegExp('React', 'i');
+            const title = new RegExp('App', 'i');
             const element = screen.getByText(title);
             expect(element).toBeInTheDocument();
         });
