@@ -37,7 +37,7 @@ describe('Given PrivateRoute component', () => {
                 isAuthenticated: false,
             });
             render(
-                <Router initialEntries={['home']} initialIndex={1}>
+                <Router initialEntries={['/home']} initialIndex={1}>
                     <PrivateRoute>
                         <p>PrivateRoute</p>
                     </PrivateRoute>
