@@ -6,14 +6,14 @@ describe('Given AppRoutes component', () => {
     describe('When we render the component And the route is home', () => {
         beforeEach(() => {
             render(
-                <Router initialEntries={['/', '/todo']} initialIndex={0}>
+                <Router initialEntries={['/', '/about']} initialIndex={0}>
                     <AppRoutes />
                 </Router>
             );
         });
-        test('Then it should display the HomePage', () => {
-            const title = new RegExp('Home', 'i');
-            const element = screen.getByText(title);
+        test('Then it should display the HomePage', async () => {
+            const title = /Home/i;
+            const element = await screen.findByText(title);
             expect(element).toBeInTheDocument();
         });
     });
