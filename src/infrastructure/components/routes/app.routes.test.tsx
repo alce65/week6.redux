@@ -19,7 +19,7 @@ describe('Given AppRoutes component', () => {
                 And the route is home`, () => {
         beforeEach(async () => {
             // eslint-disable-next-line testing-library/no-unnecessary-act
-            await act(() => {
+            await act(async () => {
                 render(
                     <Router initialEntries={paths} initialIndex={0}>
                         <AppRoutes />
