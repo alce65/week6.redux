@@ -10,7 +10,7 @@ describe('Given the function taskReducer', () => {
         isComplete: false,
     };
 
-    let action: { type: string; payload: any };
+    let action: { type: string; payload: unknown };
     let state: Array<Task>;
 
     describe('When the action is load', () => {
