@@ -7,14 +7,18 @@ export class TaskRepository implements Repository<Task> {
         this.url = url ? url : (process.env.REACT_APP_URL_TASKS as string);
     }
 
+    createError(response: Response) {
+        const message = `Error ${response.status}: ${response.statusText}`;
+        const error = new Error(message);
+        error.name = 'HTTPError';
+        return error;
+    }
+
     // read / get
     getAll(): Promise<Array<Task>> {
         return fetch(this.url).then((response) => {
             if (response.ok) return response.json();
-            const message = `Error ${response.status}: ${response.statusText}`;
-            const error = new Error(message);
-            error.name = 'HTTPError';
-            throw error;
+            throw this.createError(response);
         });
     }
 
@@ -26,14 +30,19 @@ export class TaskRepository implements Repository<Task> {
             headers: {
                 'content-type': 'application/json',
             },
-        }).then((response) => response.json());
+        }).then((response) => {
+            if (response.ok) return response.json();
+            throw this.createError(response);
+        });
     }
 
     // delete
-    delete(id: number): Promise<boolean> {
+    delete(id: number): Promise<void> {
         return fetch(`${this.url}/${id}`, {
             method: 'DELETE',
-        }).then((response) => response.ok);
+        }).then((response) => {
+            if (!response.ok) throw this.createError(response);
+        });
     }
 
     // uptate / patch
@@ -44,6 +53,9 @@ export class TaskRepository implements Repository<Task> {
             headers: {
                 'content-type': 'application/json',
             },
-        }).then((response) => response.json());
+        }).then((response) => {
+            if (response.ok) return response.json();
+            throw this.createError(response);
+        });
     }
 }

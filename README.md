@@ -1,3 +1,41 @@
+# React-Redux-TypeScrip`
+
+## Desde un proyecto previo react-typescript
+
+```shell
+mpm i react-redux @reduxjs/toolkit
+```
+
+## Desde 0
+
+```shell
+npx create-react-app <my-app> --template redux-typescript
+```
+
+# Uso de redux
+
+-   action.types -> object / enum
+
+-   action.creators -> createAction (RTK)
+-   reducer -> createReducer (RTK)
+-   (ALT) -> slice (RTK)
+
+-   test del reducer
+
+-   modelo de datos -> type / interface / class
+-   store -> configureStore (RTK) + types
+-   provider -> Provider (react-redux)
+
+-   componente (view)
+
+    -   useSelector() (react-redux)
+        useSelector((state: rootState ) => state.<branch>)
+    -   useDispatch() (react-redux)
+
+    -   ¿Integramos servicioAPI?
+        -   como servicio externo
+        -   como thunk
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

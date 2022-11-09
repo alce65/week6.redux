@@ -3,5 +3,5 @@ export interface Repository<T> {
     get?: (id: number) => Promise<T>;
     create: (item: Partial<T>) => Promise<T>;
     update: (item: Partial<T>) => Promise<T>;
-    delete: (id: number) => Promise<boolean>;
+    delete: (id: number) => Promise<void>;
 }

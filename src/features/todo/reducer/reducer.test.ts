@@ -4,7 +4,7 @@ import { Task } from '../models/task';
 
 describe('Given the function taskReducer', () => {
     const taskMock: Task = {
-        id: '1',
+        id: 1,
         title: '',
         responsible: '',
         isComplete: false,

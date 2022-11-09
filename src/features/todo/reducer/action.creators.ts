@@ -8,4 +8,4 @@ export const addActionCreator = createAction<Task>(actionTypes.add);
 
 export const updateActionCreator = createAction<Task>(actionTypes.update);
 
-export const deleteActionCreator = createAction<Task>(actionTypes.delete);
+export const deleteActionCreator = createAction<Task['id']>(actionTypes.delete);
