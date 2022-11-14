@@ -23,4 +23,5 @@ const tasksSlice = createSlice({
     },
 });
 
+export const actionTypes = tasksSlice.actions;
 export const { reducer: taskReducer } = tasksSlice;

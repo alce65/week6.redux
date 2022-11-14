@@ -1,8 +1,7 @@
-import { taskReducer } from './reducer';
-import { actionTypes } from './action.types';
 import { Task } from '../models/task';
+import { taskReducer, actionTypes } from './slice';
 
-describe('Given the function taskReducer', () => {
+describe('Given a reducer from one slice', () => {
     const taskMock: Task = {
         id: 1,
         title: '',
@@ -15,10 +14,12 @@ describe('Given the function taskReducer', () => {
 
     describe('When the action is load', () => {
         beforeEach(() => {
-            action = {
-                type: actionTypes.load,
-                payload: [taskMock],
-            };
+            // Forma literal de crear actions
+            // action = {
+            //     type: actionTypes.load.type,
+            //     payload: [taskMock],
+            // };
+            action = actionTypes.load([taskMock]);
             state = [];
         });
         test('Then the returned state should be the action payload', () => {
@@ -30,7 +31,7 @@ describe('Given the function taskReducer', () => {
     describe('When the action is add', () => {
         beforeEach(() => {
             action = {
-                type: actionTypes.add,
+                type: actionTypes.add.type,
                 payload: taskMock,
             };
             state = [];
@@ -44,7 +45,7 @@ describe('Given the function taskReducer', () => {
     describe('When the action is update', () => {
         beforeEach(() => {
             action = {
-                type: actionTypes.update,
+                type: actionTypes.update.type,
                 payload: { ...taskMock, title: 'Update task' },
             };
             state = [taskMock];
@@ -58,7 +59,7 @@ describe('Given the function taskReducer', () => {
     describe('When the action is update and the id is not valid', () => {
         beforeEach(() => {
             action = {
-                type: actionTypes.update,
+                type: actionTypes.update.type,
                 payload: { ...taskMock, id: '2', title: 'Update task' },
             };
             state = [taskMock];
@@ -72,7 +73,7 @@ describe('Given the function taskReducer', () => {
     describe('When the action is delete', () => {
         beforeEach(() => {
             action = {
-                type: actionTypes.delete,
+                type: actionTypes.delete.type,
                 payload: taskMock.id,
             };
             state = [taskMock];
@@ -86,7 +87,7 @@ describe('Given the function taskReducer', () => {
     describe('When the action is delete and the id is not valid', () => {
         beforeEach(() => {
             action = {
-                type: actionTypes.delete,
+                type: actionTypes.delete.type,
                 payload: { ...taskMock, id: '2' },
             };
             state = [taskMock];
