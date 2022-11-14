@@ -7,7 +7,7 @@ export class TaskRepository implements Repository<Task> {
         this.url = url ? url : (process.env.REACT_APP_URL_TASKS as string);
     }
 
-    createError(response: Response) {
+    #createError(response: Response) {
         const message = `Error ${response.status}: ${response.statusText}`;
         const error = new Error(message);
         error.name = 'HTTPError';
@@ -18,7 +18,7 @@ export class TaskRepository implements Repository<Task> {
     getAll(): Promise<Array<Task>> {
         return fetch(this.url).then((response) => {
             if (response.ok) return response.json();
-            throw this.createError(response);
+            throw this.#createError(response);
         });
     }
 
@@ -32,7 +32,7 @@ export class TaskRepository implements Repository<Task> {
             },
         }).then((response) => {
             if (response.ok) return response.json();
-            throw this.createError(response);
+            throw this.#createError(response);
         });
     }
 
@@ -41,7 +41,7 @@ export class TaskRepository implements Repository<Task> {
         return fetch(`${this.url}/${id}`, {
             method: 'DELETE',
         }).then((response) => {
-            if (!response.ok) throw this.createError(response);
+            if (!response.ok) throw this.#createError(response);
         });
     }
 
@@ -55,7 +55,7 @@ export class TaskRepository implements Repository<Task> {
             },
         }).then((response) => {
             if (response.ok) return response.json();
-            throw this.createError(response);
+            throw this.#createError(response);
         });
     }
 }
