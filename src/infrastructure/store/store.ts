@@ -5,6 +5,7 @@ export const appStore = configureStore({
     reducer: {
         tasks: taskReducer,
     },
+    preloadedState: { tasks: [] },
 });
 
 export type rootStore = typeof appStore;
