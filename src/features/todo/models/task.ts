@@ -11,7 +11,7 @@ export type Task = {
     isComplete: boolean;
 };
 
-export class TaskModel {
+export class TaskModel implements ProtoTask {
     isComplete: boolean;
     constructor(public title: string, public responsible: string) {
         this.isComplete = false;

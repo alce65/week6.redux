@@ -1,10 +1,10 @@
-import { Sample } from '../components/sample/sample';
+import { TaskList } from '../components/task.list/task.list';
 
 function TodoPage() {
     return (
         <main>
             <h2>Todo page</h2>
-            <Sample></Sample>
+            <TaskList></TaskList>
         </main>
     );
 }

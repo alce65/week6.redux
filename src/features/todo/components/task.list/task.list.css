@@ -1,0 +1,17 @@
+.task_list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+.task_list li {
+    border: 1px solid gainsboro;
+    margin: 0.3rem;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.task_list .button {
+    cursor: pointer;
+}
