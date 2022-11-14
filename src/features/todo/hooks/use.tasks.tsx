@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { rootState } from '../../../infrastructure/store/store';
 import { ProtoTask, Task } from '../models/task';
@@ -13,12 +13,16 @@ export const useTasks = () => {
     const dispatcher = useDispatch();
     const apiTask = useMemo(() => new TaskRepository(), []);
 
-    useEffect(() => {
-        apiTask
-            .getAll()
-            .then((tasks) => dispatcher(ac.loadActionCreator(tasks)))
-            .catch((error: Error) => console.log(error.name, error.message));
-    }, [apiTask, dispatcher]);
+    const handleLoad = useCallback(
+        () =>
+            apiTask
+                .getAll()
+                .then((tasks) => dispatcher(ac.loadActionCreator(tasks)))
+                .catch((error: Error) =>
+                    console.log(error.name, error.message)
+                ),
+        [apiTask, dispatcher]
+    );
 
     const handleAdd = (newTask: ProtoTask) => {
         apiTask
@@ -43,6 +47,7 @@ export const useTasks = () => {
 
     return {
         tasks,
+        handleLoad,
         handleAdd,
         handleUpdate,
         handleDelete,
