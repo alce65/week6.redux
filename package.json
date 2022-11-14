@@ -58,7 +58,7 @@
         "coveragePathIgnorePatterns": [
             "<rootDir>/src/reportWebVitals.ts",
             "<rootDir>/src/index.ts",
-            "<rootDir>/src/tools/debug.ts"
+            "<rootDir>/src/tools/*"
         ]
     },
     "browserslist": {
