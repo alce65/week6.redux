@@ -23,7 +23,7 @@ export function TaskItem({ item }: { item: Task }) {
             />
             <span>{item.id}</span>
             <span>{item.title}</span>
-            <span className="button" onClick={handleClick}>
+            <span className="button" onClick={handleClick} role="button">
                 🗑️
             </span>
         </li>
